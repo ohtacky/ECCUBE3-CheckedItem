@@ -1,0 +1,33 @@
+{#
+ This file is part of EC-CUBE
+
+ Copyright(c) 2000-2015 LOCKON CO.,LTD. All Rights Reserved.
+ http://www.lockon.co.jp/
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+#}
+
+<!--チェックした商品-->
+{% if checkedItems %}
+<div class="item_gallery">
+    <h4>チェックした商品</h4>
+    <ul class="row">
+      {% for checkedItem in checkedItems  %}
+        <div class="col-sm-2 col-xs-3">
+            <div class="pickup_item">
+              <p>
+                {% if checkedItem.Status == '公開' and checkedItem.del_flg == 0 %}
+                <a href="{{ url('product_detail', {'id': checkedItem.id}) }}">
+                    <div class="item_photo"><img src="{{ app.config.image_save_urlpath }}/{{ checkedItem.main_list_image|no_image_product }}"></div>
+                </a>
+                {% else %}
+                <div class="item_photo"><img src="{{ app.config.image_save_urlpath }}/{{ checkedItem.main_list_image|no_image_product }}"></div>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+      {% endfor %}
+    </ul>
+</div>
+{% endif %}

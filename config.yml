@@ -1,0 +1,6 @@
+name: チェックした商品
+code: CheckedItem
+version: 1.0.0
+service:
+    - CheckedItemServiceProvider
+event: CheckedItemEvent
